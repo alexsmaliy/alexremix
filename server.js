@@ -8,5 +8,9 @@ const handleRequest = createPagesFunctionHandler({
 });
 
 export function onRequest(context) {
+  const stmt = context.env.D1.prepare("select * from bookmarks")
+  const values = await stmt.first();
+  console.log(values)
+  console.log(context)
   return handleRequest(context);
 }
