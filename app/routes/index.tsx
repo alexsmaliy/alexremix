@@ -15,6 +15,8 @@ export const loader: LoaderFunction = async function({request, context, params})
   return JSON.stringify([
     Object.getPrototypeOf(context.D1),
     Object.getOwnPropertyNames(context.D1),
+    Object.getPrototypeOf(context.KV1),
+    Object.getOwnPropertyNames(context.KV1),
   ])
 }
 
