@@ -1,5 +1,6 @@
 import { LoaderFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
+import { AppLoadContext } from "@remix-run/cloudflare";
 
 export const loader: LoaderFunction = async function({request, context, params}) {
   // const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json`
@@ -9,7 +10,9 @@ export const loader: LoaderFunction = async function({request, context, params})
   // const values = await stmt.first();
   // console.log(JSON.stringify(values))
   // return JSON.stringify(values)
-  return JSON.stringify(context)
+  // @ts-ignore
+  const val = await context.KV1.get("k");
+  return JSON.stringify(val)
 }
 
 export default function Index() {
