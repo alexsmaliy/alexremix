@@ -6,8 +6,10 @@ export const loader: LoaderFunction = async function({request, context, params})
   // const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   // const response = await fetch(url).then(r => r.json()).then(JSON.stringify)
   // return response
-  const stmt = await context.D1.binding.exec("select * from bookmarks")
-  const val = await stmt.first();
+  // let _ = await context.D1.exec("create table if not exists Moo(title TEXT NOT NULL);")
+  // _ = await context.D1.exec("insert into Moo (title) VALUES ('v1'), ('v2');")
+  const stmt = await context.D1.prepare("select * from Moo;")
+  const val = await stmt.all(); 
   // console.log(JSON.stringify(values))
   // return JSON.stringify(values)
   // @ts-ignore
@@ -16,8 +18,8 @@ export const loader: LoaderFunction = async function({request, context, params})
     val,
     Object.getPrototypeOf(context.D1),
     Object.getOwnPropertyNames(context.D1),
-    Object.getPrototypeOf(context.KV1),
-    Object.getOwnPropertyNames(context.KV1),
+    // Object.getPrototypeOf(context.KV1),
+    // Object.getOwnPropertyNames(context.KV1),
   ])
 }
 
