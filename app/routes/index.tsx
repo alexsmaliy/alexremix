@@ -5,7 +5,10 @@ export const loader: LoaderFunction = async function({request, context, params})
   // const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   // const response = await fetch(url).then(r => r.json()).then(JSON.stringify)
   // return response
-  return JSON.stringify(context)
+  const stmt = context.D1.prepare("select * from bookmarks")
+  const values = await stmt.first();
+  // console.log(JSON.stringify(values))
+  return JSON.stringify(JSON.stringify(values))
 }
 
 export default function Index() {
