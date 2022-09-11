@@ -6,7 +6,7 @@ export const loader: LoaderFunction = async function({request, context, params})
   // const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   // const response = await fetch(url).then(r => r.json()).then(JSON.stringify)
   // return response
-  const stmt = await context.D1.exec("select * from bookmarks")
+  const stmt = await context.D1.binding.exec("select * from bookmarks")
   // const val = await stmt.first();
   // console.log(JSON.stringify(values))
   // return JSON.stringify(values)
