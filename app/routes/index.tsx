@@ -6,13 +6,13 @@ export const loader: LoaderFunction = async function({request, context, params})
   // const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   // const response = await fetch(url).then(r => r.json()).then(JSON.stringify)
   // return response
-  const stmt = context.D1.prepare("select * from bookmarks")
-  const val = await stmt.first();
+  const stmt = await context.D1.exec("select * from bookmarks")
+  // const val = await stmt.first();
   // console.log(JSON.stringify(values))
   // return JSON.stringify(values)
   // @ts-ignore
   // const val = await context.KV1.get("k");
-  return JSON.stringify(val)
+  return JSON.stringify(stmt)
 }
 
 export default function Index() {
