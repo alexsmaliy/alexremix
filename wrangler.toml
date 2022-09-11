@@ -1,0 +1,21 @@
+name = "remix-cloudflare-workers"
+
+workers_dev = true
+main = "./build/index.js"
+# https://developers.cloudflare.com/workers/platform/compatibility-dates
+compatibility_date = "2022-04-05"
+
+[site]
+bucket = "./public"
+
+[build]
+command = "npm run build"
+
+[[ d1_databases ]]
+binding = "D1" # i.e. available in your Worker on env.DB
+database_name = "Omark"
+database_id = "ab8b3148-b16b-4ee1-897a-66e77857e027"
+
+[vars]
+API_TOKEN = "example_dev_token"
+STRIPE_TOKEN = "pk_xyz1234_test"
