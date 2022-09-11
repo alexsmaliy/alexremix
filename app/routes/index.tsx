@@ -13,10 +13,10 @@ export const loader: LoaderFunction = async function({request, context, params})
   // @ts-ignore
   // const val = await context.KV1.get("k");
   return JSON.stringify([
-    Object.getPrototypeOf(context.D1),
-    Object.getOwnPropertyNames(context.D1),
-    Object.getPrototypeOf(context.KV1),
-    Object.getOwnPropertyNames(context.KV1),
+    Object.getPrototypeOf(context.D1.binding),
+    Object.getOwnPropertyNames(context.D1.binding),
+    Object.getPrototypeOf(context.KV1.binding),
+    Object.getOwnPropertyNames(context.KV1.binding),
   ])
 }
 
