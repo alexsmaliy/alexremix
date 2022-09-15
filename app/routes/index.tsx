@@ -8,7 +8,7 @@ export const loader: LoaderFunction = async function({request, context, params})
   // return response
   // let _ = await context.D1.exec("create table if not exists Moo(title TEXT NOT NULL);")
   // _ = await context.D1.exec("insert into Moo (title) VALUES ('v1'), ('v2');")
-  const stmt = await context.D1.prepare("select * from Moo;")
+  const stmt = await context.D1.prepare("select * from Bookmarks;")
   const val = await stmt.all(); 
   // console.log(JSON.stringify(values))
   // return JSON.stringify(values)
